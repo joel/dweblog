@@ -58,6 +58,11 @@ Rails.application.configure do
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 
+  config.assets.configure do |env|
+    env.cache = ActiveSupport::Cache
+      .lookup_store(:memory_store, { size: 32.megabytes })
+  end
+
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "yweblog_production"
